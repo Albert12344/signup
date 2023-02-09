@@ -7,13 +7,13 @@ const dotenv = require('dotenv').config()
 
 //Log in post for pupil
 router.post("/", async(req,res) => {
-    const {username, password} = req.body
+    const {email, password} = req.body
 
     try{
-        const pupil = await userCollection.findOne({username:username})
+        const pupil = await userCollection.findOne({email:email})
         if(pupil && (await bcrypt.compare(password, pupil.password))){
             const token = jwt
-            .sign({pupil_id: pupil._id, username}, process.env.TOKEN_KEY, {expiresIn: "1h",});
+            .sign({pupil_id: pupil._id, email}, process.env.TOKEN_KEY, {expiresIn: "1h",});
            
             pupil.token = token;
 

@@ -9,9 +9,9 @@ const dotenv = require('dotenv').config()
 //Sign up post for pupil
 router.post("/", async(req,res) => {
     try {
-        const {username, name, lastname, password} = req.body   
+        const {email, name, lastname, password} = req.body   
     
-        const check = await userCollection.findOne({username:username})
+        const check = await userCollection.findOne({email:email})
     
         if(check) {
            return res.json('exist')
@@ -20,14 +20,14 @@ router.post("/", async(req,res) => {
         const hashPassword = await bcrypt.hash(password, 10)
         
         const pupil = await userCollection.create({
-            username: username.toLowerCase(),
+            email: email.toLowerCase(),
             name,
             lastname,
             password: hashPassword
         })
     
         const token = jwt.sign(
-            { pupil_id: pupil._id, username}, process.env.TOKEN_KEY, {expiresIn: "1h",});
+            { pupil_id: pupil._id, email}, process.env.TOKEN_KEY, {expiresIn: "1h",});
     
             pupil.token = token;
             

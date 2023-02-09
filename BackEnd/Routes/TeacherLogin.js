@@ -7,13 +7,13 @@ const dotenv = require('dotenv').config()
 
 //Log in post for teacher
 router.post("/", async(req,res) => {
-    const {teacherusername, teacherpassword} = req.body
+    const {teacheremail, teacherpassword} = req.body
 
         try{
-            const teacher = await teacherCollection.findOne({teacherusername:teacherusername})
+            const teacher = await teacherCollection.findOne({teacheremail:teacheremail})
             if(teacher && (await bcrypt.compare(teacherpassword, teacher.teacherpassword))){
                 const token = jwt
-                .sign({teacher_id: teacher._id, teacherusername}, process.env.TOKEN_KEY, {expiresIn: "2h",});
+                .sign({teacher_id: teacher._id, teacheremail}, process.env.TOKEN_KEY, {expiresIn: "2h",});
                 teacher.token = token;
                 res.json('exist')
             }

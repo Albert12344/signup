@@ -1,11 +1,14 @@
 require('./Mongo').connect()
 const express = require('express')
 const cors = require('cors')
-const dotenv = require('dotenv').config()
 const pupilSignupRoute = require('../Routes/PupilSignup')
 const teacherSignupRoute = require('../Routes/TeacherSignup')
 const pupilLoginRoute = require('../Routes/PupilLogin')
 const teacherLoginRoute = require('../Routes/TeacherLogin')
+const getPupilToken = require('../Routes/getPupilToken')
+const resetPupilPassword = require('../Routes/resetPupilPassword')
+const updatePupilPassword = require('../Routes/updatePupilPassword')
+
 
 const app = express()
 app.use(express.json())
@@ -17,4 +20,7 @@ app.use('/pupilsignup', pupilSignupRoute)
 app.use('/teachersignup', teacherSignupRoute)
 app.use('/pupillogin', pupilLoginRoute)
 app.use('/teacherlogin', teacherLoginRoute)
+app.use('/getpupiltoken', getPupilToken)
+app.use('/resetpassword', resetPupilPassword)
+app.use('/updatepassword', updatePupilPassword)
 

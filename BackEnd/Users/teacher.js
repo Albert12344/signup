@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const teacherSchema = new mongoose.Schema({
-    teacherusername:{
+    teacheremail:{
         type: String,
         required: true,
         unique: true 
@@ -20,6 +20,12 @@ const teacherSchema = new mongoose.Schema({
     },
     token:{
         type: String
+    },
+    resetPasswordToken: {
+        type: String,
+      },
+    resetPasswordExpires: {
+        type: Date,
     }
 })
 

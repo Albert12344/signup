@@ -9,9 +9,9 @@ const dotenv = require('dotenv').config()
 //Sign up post for teacher
 router.post("/", async(req,res) => {
     try {
-    const {teacherusername, teachername, teacherlastname, teacherpassword} = req.body  
+    const {teacheremail, teachername, teacherlastname, teacherpassword} = req.body  
 
-    const check = await teacherCollection.findOne({teacherusername:teacherusername})
+    const check = await teacherCollection.findOne({teacheremail:teacheremail})
 
     if(check) {
        return res.status(409).send('exist')
@@ -20,14 +20,14 @@ router.post("/", async(req,res) => {
     const hashPassword = await bcrypt.hash(teacherpassword, 10)
     
     const teacher = await teacherCollection.create({
-        teacherusername: teacherusername.toLowerCase(),
+        teacheremail: teacheremail.toLowerCase(),
         teachername,
         teacherlastname,
         teacherpassword: hashPassword
     })
 
     const token = jwt.sign(
-        { teacher_id: teacher._id, teacherusername}, process.env.TOKEN_KEY, {expiresIn: "1h",});
+        { teacher_id: teacher._id, teacheremail}, process.env.TOKEN_KEY, {expiresIn: "1h",});
 
         teacher.token = token;
         
