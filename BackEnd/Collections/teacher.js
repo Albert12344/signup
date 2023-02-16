@@ -1,35 +1,35 @@
 const mongoose = require('mongoose')
 
 const teacherSchema = new mongoose.Schema({
-    teacheremail:{
+    email:{
         type: String,
         required: true,
-        unique: true 
     },  
-    teachername:{
+    name:{
         type: String,
         required: true
     },  
-    teacherlastname:{
+    lastname:{
         type: String,
         required: true
     },  
-    teacherpassword:{
+    password:{
         type: String,
         required: true,
     },
     token:{
         type: String
     },
-    resetPasswordToken: {
+    verification: {
         type: String,
-      },
-    resetPasswordExpires: {
-        type: Date,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
     }
 })
 
-const teacherCollection = mongoose.model('teacher', teacherSchema)
+const teacherCollection = mongoose.model('teachers', teacherSchema)
 
 
 module.exports = teacherCollection

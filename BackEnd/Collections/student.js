@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
     email:{
         type: String,
         required: true,
-        unique: true 
     },  
     name:{
         type: String,
@@ -21,14 +20,15 @@ const userSchema = new mongoose.Schema({
     token:{
         type: String
     },
-    resetPasswordNumber: {
-        type: Number,
+    verification: {
+        type: String,
     },
-    resetPasswordExpires: {
-      type: Date,
-    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    }
 })
 
-const userCollection = mongoose.model('users', userSchema)
+const studentCollection = mongoose.model('students', studentSchema)
 
-module.exports = userCollection
+module.exports = studentCollection
