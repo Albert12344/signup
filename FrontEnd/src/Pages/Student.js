@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function User() {
+export default function Student() {
   return (
-    <div>User</div>
+    <div>
+      Welcome!
+    </div>
   )
 }

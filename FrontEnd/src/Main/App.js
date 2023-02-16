@@ -14,17 +14,14 @@ import NewStudentPassword from "../updatePassword/NewStudentPass"
 import NewTeacherPassword from "../updatePassword/NewTeacherPass"
 
 
-
-
 function App() {
-
   return (
     <div className="App">
         <Router>
             <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="student/home" element={<Student/>}/>
-              <Route path="teacher/home" element={<Teacher/>}/>
+              <Route path='student/home' element={<Student/>}/>
+              <Route path='teacher/home' element={<Teacher/>}/>
               <Route path="Student/signup" element={<StudentSignup/>}/>
               <Route path="teacher/signup" element={<TeacherSignup/>}/>
               <Route path="student/login" element={<StudentLogin/>}/>

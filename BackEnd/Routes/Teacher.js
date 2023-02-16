@@ -74,5 +74,23 @@ router.post("/login", async(req,res) => {
     }
 })
 
+router.post("/reset", async(req,res) => {
+    const { email } = req.body
+    const { token, verificationCode } = generateVerificationToken(email);
+
+    const teacher = await teacherCollection.findOne({email:email})
+
+    if(teacher) {
+        const { token: token, verificationCode: VerificationCode }  = generateVerificationToken(email);
+        sendVerificationEmail(email, VerificationCode)
+        await teacherCollection.findOneAndUpdate({ email }, { $set: { verification: verificationCode } });
+        await teacherCollection.findOneAndUpdate({ email }, { $set: { verification: VerificationCode, token: token } });
+        res.setHeader("Authorization", `Bearer ${token}`);
+        res.json({ status: 'exist', token: token })
+    }else {
+        res.json('notExist')
+    }
+})
+
 
 module.exports = router

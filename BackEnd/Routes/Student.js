@@ -41,7 +41,7 @@ router.post("/signup", async(req,res) => {
 router.post("/verify", async(req,res) => {
     const token = req.header('Authorization').replace('Bearer ', '');
     const verificationCode = req.body.verificationCode;
-    
+
     const email = verifyVerificationToken(token, verificationCode);
     if (email) {
         await studentCollection.findOneAndUpdate({ token }, { $set: { isVerified: true } });
@@ -73,6 +73,36 @@ router.post("/login", async(req,res) => {
         res.json('notExist');
     }
 })
+
+router.post("/reset", async(req,res) => {
+    const { email } = req.body
+    const { token, verificationCode } = generateVerificationToken(email);
+
+    const student = await studentCollection.findOne({email:email})
+
+    if(student) {
+        const { token: token, verificationCode: VerificationCode }  = generateVerificationToken(email);
+        sendVerificationEmail(email, VerificationCode)
+        await studentCollection.findOneAndUpdate({ email }, { $set: { verification: verificationCode } });
+        await studentCollection.findOneAndUpdate({ email }, { $set: { verification: VerificationCode, token: token } });
+        res.setHeader("Authorization", `Bearer ${token}`);
+        res.json({ status: 'exist', token: token })
+    }else {
+        res.json('notExist')
+    }
+})
+
+router.put('/update/:id', async (req, res) => {
+    const studentId = req.params.id
+    const { password } = req.body
+
+    const check = await studentCollection.findOneAndUpdate({ _id: studentId }, { $set: { password: password } });
+    if(check) {
+        res.json('Password updated successfully!')
+    }else {
+        res.json('something went wrong')
+    }
+});
 
 
 

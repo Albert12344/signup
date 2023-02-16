@@ -35,22 +35,22 @@ export default function TeacherLogin() {
   }
 
   return (
-    <div>
-      <h1>Մուտք</h1>
-      <form action="POST">
-        <label>Եղեկտրոնային Փոստ</label><br />
-        <input type="text" onChange={(e)=>{setEmail(e.target.value)}} placeholder='Եղեկտրոնային փոստ'/><br/>
-        <label>Գաղտնաբառ</label><br />
-        <input type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder='Գաղտնաբառ'/><br/>
+    <div className='container'>
+      <img className="img" src="https://upload.wikimedia.org/wikipedia/hy/9/9a/%D4%BB%D6%80%D5%A1%D5%AF%D5%A1%D5%B6_%D5%A4%D5%BA%D6%80%D5%B8%D6%81.jpg" alt="" />
+      <form className='form'>
+        <h1>Մուտք</h1>
+        <label className='label'>Եղեկտրոնային Փոստ</label><br />
+        <input className='input' type="text" onChange={(e)=>{setEmail(e.target.value)}} placeholder='Եղեկտրոնային փոստ'/><br/>
+        <label className='label'>Գաղտնաբառ</label><br />
+        <input className='input' type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder='Գաղտնաբառ'/><br/>
         {incorrect && <p>Եղ․ փոստը կամ գաղտնաբառը սխալ է</p>}
-        <input type="submit" onClick={submit}/>
+        <button className='button' type="submit" onClick={submit}>Հաստատել</button><br />
+        <Link className='label' to='/teacher/resetpassword'>Մոռացե՞լ եք գաղտնաբառը</Link>
+        <br />
+      <p className='label'>Կամ</p>
+      <br />
+      <Link className='label' to='/teacher/signup'>Գրանցում</Link>
       </form>
-      
-      <br />
-      <p>Կամ</p>
-      <br />
-
-      <Link to='/teacher/signup'>Գրանցում</Link>
     </div>
   )
 }

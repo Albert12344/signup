@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 
 function generateVerificationToken(email) {
     const verificationCode = Math.floor(Math.random() * 900000) + 100000; + ""// Generate a random 6-digit code
-    const token = jwt.sign({ email, verificationCode }, process.env.TOKEN_KEY, { expiresIn: '1 minutes' });
+    const token = jwt.sign({ email, verificationCode, password }, process.env.TOKEN_KEY, { expiresIn: '1 minutes' });
     return { token, verificationCode };
 }
 

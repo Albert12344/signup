@@ -1,0 +1,45 @@
+.App {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+.img {
+    height: 450px;
+    width: 500px;
+}
+
+.form {
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.label {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.input {
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.button {
+    height: 30px;
+    width: 150px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.p {
+    padding-left: 40px;
+    font-size: 15px;
+}
