@@ -12,16 +12,25 @@
 }
 
 .form {
-    height: 600px;
-    width: 400px;
+    height: 120vh;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
+}
+
+.form1 {
+    height: 97.4vh;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .label {
-    font-size: 20px;
+    font-size: 17px;
     text-decoration: none;
 }
 
@@ -42,4 +51,149 @@
 .p {
     padding-left: 40px;
     font-size: 15px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.homeContainer {
+    display: flex;
+}
+
+.router {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.button1 {
+    height: 30px;
+    width: 150px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.container2 {
+    height: 96vh;
+    width: 99vw;
+}
+
+.userPanel {
+    display: flex;
+    height: 50px;
+    width: 98vw;
+    flex-direction: column;
+    border-radius: 5px;
+    align-items: flex-end;
+}
+
+.student {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.userImg{
+    height: 50px;
+}
+
+.userInfo {
+    height: 900px;
+    width: 250px;
+    background-color: rgb(112, 107, 112);
+    border-radius: 5px;
+}
+
+.a {
+    color: white;
+    text-decoration: none;
+}
+
+.userImg1{
+    height: 100px;
+    width: 100px;
+}
+
+.dataDiv {
+    height: 500px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropbtn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+  }
+
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #ffffff;}
+
+.Quiz {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.type {
+    height: 200vh;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonDiv {
+    display: flex;
+}
+
+.body {
+    display: flex;
+    width: 99.5vw;
+    height: 90vh;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+.showButtons {
+    display: flex;
+    width: 80vw;
+    background-color: antiquewhite;
+}
+
+.quiz{
+    background-color:darkkhaki ;
+    width: 50vw;
+    border-radius: 10px;
 }

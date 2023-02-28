@@ -16,12 +16,7 @@ const teacherSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-    },
-    token:{
-        type: String
-    },
-    verification: {
-        type: String,
+        minlength: 6
     },
     isVerified: {
         type: Boolean,

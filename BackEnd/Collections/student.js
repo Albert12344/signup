@@ -15,17 +15,15 @@ const studentSchema = new mongoose.Schema({
     },  
     password:{
         type: String,
-        required: true
-    },
-    token:{
-        type: String
-    },
-    verification: {
-        type: String,
+        required: true,
+        minlength: 6
     },
     isVerified: {
         type: Boolean,
         default: false
+    },
+    course: {
+        type: Number
     }
 })
 
